@@ -5,13 +5,14 @@ export class UserSelector {
 		this.userSelection = {};
 	}
 
-	listen(){
+	listen() {
 		document.getElementById('form').addEventListener('submit', this.submitForm.bind(this));
 	}
 
-	submitForm(evt){
+	submitForm(evt) {
 		evt.preventDefault();
-		this.userSelection.username = document.getElementById('username').value;
+		this.userSelection.username = document.getElementById('username').value.toLowerCase().replace(" ", "_");
+		this.userSelection.displayName = document.getElementById('username').value;
 		let arenaRadios = document.getElementsByName('arena');
 		for (var i = 0; i < arenaRadios.length; i++) {
 			if (arenaRadios[i].checked) {
@@ -27,14 +28,14 @@ export class UserSelector {
 			}
 		}
 
-		if(this.userSelection.username && this.userSelection.place && this.userSelection.character){
+		if (this.userSelection.username && this.userSelection.place && this.userSelection.character) {
 			this.initEngine();
 		} else {
 			alert("All fields are required.");
 		}
 	}
 
-	initEngine(){
+	initEngine() {
 		//document.getElementById('loading-screen').style.display = 'flex';
 		document.getElementById('user-selection').style.display = 'none';
 
