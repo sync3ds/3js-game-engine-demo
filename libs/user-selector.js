@@ -11,6 +11,7 @@ export class UserSelector {
 
 	submitForm(evt) {
 		evt.preventDefault();
+
 		this.userSelection.username = document.getElementById('username').value.toLowerCase().replace(" ", "_");
 		this.userSelection.displayName = document.getElementById('username').value;
 		let arenaRadios = document.getElementsByName('arena');
